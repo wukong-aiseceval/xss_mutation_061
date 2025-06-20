@@ -23,9 +23,9 @@ config = apps.get_app_config("dpaste")
 class Highlighter(object):
     template_name = "dpaste/highlight/code.html"
 
-    def highlight(self, code_string, lexer_name=None):
+    def highlight(self, source_code, lexer_name=None):
         """Subclasses need to override this."""
-        return code_string
+        return source_code
 
     @staticmethod
     def get_lexer_display_name(lexer_name, fallback=_("(Deprecated Lexer)")):

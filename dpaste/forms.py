@@ -70,10 +70,10 @@ class SnippetForm(forms.ModelForm):
             self.fields["lexer"].initial = request.GET["l"]
 
     def clean_content(self):
-        content = self.cleaned_data.get("content", "")
-        if not content.strip():
+        snippet_content = self.cleaned_data.get("content", "")
+        if not snippet_content.strip():
             raise forms.ValidationError(_("This field is required."))
-        return content
+        return snippet_content
 
     def clean_expires(self):
         """

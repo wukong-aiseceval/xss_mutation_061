@@ -20,15 +20,15 @@ def generate_secret_id(length):
             "consider increasing the SLUG_LENGTH."
         )
 
-    secret_id = "".join(
+    unique_id = "".join(
         [R.choice(config.SLUG_CHOICES) for i in range(length or config.SLUG_LENGTH)]
     )
 
     # Check if this slug already exists, if not, return this new slug
     try:
-        Snippet.objects.get(secret_id=secret_id)
+        Snippet.objects.get(secret_id=unique_id)
     except Snippet.DoesNotExist:
-        return secret_id
+        return unique_id
 
     # Otherwise create a new slug which is +1 character longer
     # than the previous one.

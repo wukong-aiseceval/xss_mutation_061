@@ -52,8 +52,8 @@ class SnippetView(FormView):
         return kwargs
 
     def form_valid(self, form):
-        snippet = form.save()
-        return HttpResponseRedirect(snippet.get_absolute_url())
+        code_snippet = form.save()
+        return HttpResponseRedirect(code_snippet.get_absolute_url())
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
